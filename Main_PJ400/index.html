@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="shortcut icon" href="#">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <script
+      src="https://kit.fontawesome.com/fa62c117c7.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+    
+
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>S00184337 - Project 400</title>
+
+
+    <script type="module">
+
+      // at start up hide all the column names attached to the sliders
+      document.getElementById("col1db_").style.display = "none";
+      document.getElementById("col2db_").style.display = "none";
+      document.getElementById("col3db_").style.display = "none";
+      document.getElementById("col4db_").style.display = "none";
+      document.getElementById("col5db_").style.display = "none";
+      document.getElementById("col6db_").style.display = "none";
+      document.getElementById("col7db_").style.display = "none";
+      document.getElementById("col8db_").style.display = "none";
+      document.getElementById("col9db_").style.display = "none";
+      document.getElementById("col10db_").style.display = "none";
+      document.getElementById("col11db_").style.display = "none";
+      document.getElementById("col12db_").style.display = "none";
+      document.getElementById("col13db_").style.display = "none";
+      document.getElementById("col14db_").style.display = "none";
+      document.getElementById("col15db_").style.display = "none";
+      document.getElementById("col16db_").style.display = "none";
+      document.getElementById("col17db_").style.display = "none";
+      document.getElementById("col18db_").style.display = "none";
+      document.getElementById("col19db_").style.display = "none";
+      document.getElementById("col20db_").style.display = "none";
+
+      // at start up hide all the sliders
+      document.getElementById("myRange").style.display = "none";
+      document.getElementById("myRange2").style.display = "none";
+      document.getElementById("myRange3").style.display = "none";
+      document.getElementById("myRange4").style.display = "none";
+      document.getElementById("myRange5").style.display = "none";
+      document.getElementById("myRange6").style.display = "none";
+      document.getElementById("myRange7").style.display = "none";
+      document.getElementById("myRange8").style.display = "none";
+      document.getElementById("myRange9").style.display = "none";
+      document.getElementById("myRange10").style.display = "none";
+      document.getElementById("myRange11").style.display = "none";
+      document.getElementById("myRange12").style.display = "none";
+      document.getElementById("myRange13").style.display = "none";
+      document.getElementById("myRange14").style.display = "none";
+      document.getElementById("myRange15").style.display = "none";
+      document.getElementById("myRange16").style.display = "none";
+      document.getElementById("myRange17").style.display = "none";
+      document.getElementById("myRange18").style.display = "none";
+      document.getElementById("myRange19").style.display = "none";
+      document.getElementById("myRange20").style.display = "none";
+
+      // at start up hide all the column inputs 
+      document.getElementById("col1").style.display = "none";
+      document.getElementById("col2").style.display = "none";
+      document.getElementById("col3").style.display = "none";
+      document.getElementById("col4").style.display = "none";
+      document.getElementById("col5").style.display = "none";
+      document.getElementById("col6").style.display = "none";
+      document.getElementById("col7").style.display = "none";
+      document.getElementById("col8").style.display = "none";
+      document.getElementById("col9").style.display = "none";
+      document.getElementById("col10").style.display = "none";
+      document.getElementById("col11").style.display = "none";
+      document.getElementById("col12").style.display = "none";
+      document.getElementById("col13").style.display = "none";
+      document.getElementById("col14").style.display = "none";
+      document.getElementById("col15").style.display = "none";
+      document.getElementById("col16").style.display = "none";
+      document.getElementById("col17").style.display = "none";
+      document.getElementById("col18").style.display = "none";
+      document.getElementById("col19").style.display = "none";
+      document.getElementById("col20").style.display = "none";
+
+
+
+
+      // create the various alert messages needed through out the pag 
+      function msg() {
+        alert(" Hello User!!\n Your Data has been successfully uploaded.");
+      }
+      function msg2() {
+        alert(" Hello User!!\nSorry for the inconvenience.\nBut the amount of columns to be passed to the model is currently limited to 20 columns.\nPlease resubmit an amount.\n Thank you.");
+      }
+      function scoreMSG() {
+        alert("Hello User!!\n\nAccuracy can be gauged as an evaluation metric particularly used for classification tasks. It represents the percentage of accurate predictions..\n\nAn accuracy measure of anything between 70%-90% is ideal and is also consistent with industry standards.\n\nAnything below this range would required further anyalysis.");
+      }
+      function precisionMSG() {
+        alert("Hello User!!\n\nPrecision can be gauged as such, within everything that has been predicted as a positive, precision counts the percentage that is correct.\n\nA not precise model may find a lot of the positives, but its selection method is noisy: it also wrongly detects many positives that aren’t actually positives.\n\nA precise model is very “pure”: maybe it does not find all the positives, but the ones that the model does class as positive are very likely to be correct\n\nPrecision score is considered perfect when it’s 1, while the model is a total failure when it’s 0.");
+      }
+      function recallMSG() {
+        alert("Hello User!!\n\nRecall can be gauged as such, within everything that actually is positive, how many did the model succeed to find.\n\nA model with high recall succeeds well in finding all the positive cases in the data, even though they may also wrongly identify some negative cases as positive cases.\n\nA model with low recall is not able to find all (or a large part) of the positive cases in the data.\n\nRecall score is considered perfect when it’s 1, while the model is a total failure when it’s 0.");
+      }  
+      function f1MSG() {
+        alert("Hello User!!\n\nF1 score can be gauged as such, F1 score is a combination the precision and recall metrics into a single metric and is is defined as the harmonic mean of precision and recall.\n\nSince the F1 score is an average of Precision and Recall, it means that the F1 score gives equal weight to Precision and Recall.\n\nAn F1 score is considered perfect when it’s 1, while the model is a total failure when it’s 0.");
+      }  
+      function supportMSG() {
+        alert(" Hello User!!\n\nSupport can be gauged as such, The support is the number of occurrences of each class in the dataset.\n\n");
+      }  
+      
+
+
+
+      // create vars for the various buttons to link to functions
+
+      var fileChooser = document.getElementById('file-chooser');
+      var button = document.getElementById('upload-button');
+      var results = document.getElementById('results');
+      var score_i = document.getElementById('score_info');
+      var precision_i = document.getElementById('precision_info')
+      var recall_i = document.getElementById('recall_info');
+      var f1_i = document.getElementById('f1_info');
+      var support_i = document.getElementById('support_info');
+
+
+      // create event listener fucntions for each of the buttons
+
+      button.addEventListener('click', function() {
+          msg();
+      });
+      score_i.addEventListener('click', function() {
+          scoreMSG();
+      });
+      precision_i.addEventListener('click', function() {
+          precisionMSG();
+      });
+      recall_i.addEventListener('click', function() {
+          recallMSG();
+      });
+      f1_i.addEventListener('click', function() {
+          f1MSG();
+      });
+      support_i.addEventListener('click', function() {
+          supportMSG();
+      });
+
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"
+
+      import { ref, set } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"
+      import { child, get } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"
+      import { onValue } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js"
+
+      const firebaseConfig = {
+      apiKey: "AIzaSyD3tmYy2tlTC-zagphd61IuYWrY1TKC4Co",
+      authDomain: "project-400-64151.firebaseapp.com",
+      databaseURL: "https://project-400-64151-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "project-400-64151",
+      storageBucket: "project-400-64151.appspot.com",
+      messagingSenderId: "537222631657",
+      appId: "1:537222631657:web:c6f871ade8d708c12f6078",
+      measurementId: "G-15PSMDHRYC"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      // Get a reference to the database service
+      const database = getDatabase(app);
+      const db = getDatabase();
+      const dbRef = ref(getDatabase());
+
+
+      // set values to empty strings
+      name = '';
+      set(ref(db, 'Algorithim Output/Class_0 Probability:'), {
+        value : name
+      });
+      name = '';
+      set(ref(db, 'Algorithim Output/Class_1 Probability:'), {
+        value : name
+      });
+      
+      
+      // when the run button is pressed, fucntion is executed. Function is to write a 1 to the database, hold for 7 seconds then reset back to 0.
+      run.onclick = function() {
+        //console.log('PRESS');
+        // store the name var to 1
+        name = 1;
+        // write the "1" value to the database
+        set(ref(db, 'Buttons/Execute'), {
+          value : name
+        });
+        // start a countdown timer of 7 seconds before resetting the run state back to 0
+        setTimeout(() => { name = 0;
+          set(ref(db, 'Buttons/Execute'), {
+          value : name
+        }); }, 7000);
+        
+      }
+
+      // when the clear button is pressed, fucntion is executed. Function is to write a 1 to the database, hold for 7 seconds then reset back to 0.
+      clear.onclick = function() {
+        //store the 1 in the variable name
+        name = 1;
+        // write the 1 to the database
+        set(ref(db, 'Buttons/Clear'), {
+          value : name
+        });
+        // start hold on timer for 10 seconds then reset the var back to 0
+        setTimeout(() => { name = 0;
+          set(ref(db, 'Buttons/Clear'), {
+          value : name
+        }); }, 10000);
+        
+      }
+
+      // define slider vars
+
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+
+      var slider2 = document.getElementById("myRange2");
+      var output2 = document.getElementById("demo");
+
+      var slider3 = document.getElementById("myRange3");
+      var output3 = document.getElementById("demo");
+
+      var slider4 = document.getElementById("myRange4");
+      var output4 = document.getElementById("demo");
+
+      var slider5 = document.getElementById("myRange5");
+      var output5 = document.getElementById("demo");
+
+      var slider6 = document.getElementById("myRange6");
+      var output6 = document.getElementById("demo");
+
+      var slider7 = document.getElementById("myRange7");
+      var output7 = document.getElementById("demo");
+
+      var slider8 = document.getElementById("myRange8");
+      var output8 = document.getElementById("demo");
+
+      var slider9 = document.getElementById("myRange9");
+      var output9 = document.getElementById("demo");
+
+      var slider10 = document.getElementById("myRange10");
+      var output10 = document.getElementById("demo");
+
+      var slider11 = document.getElementById("myRange11");
+      var output11 = document.getElementById("demo");
+
+      var slider12 = document.getElementById("myRange12");
+      var output12 = document.getElementById("demo");
+
+      var slider13 = document.getElementById("myRange13");
+      var output13 = document.getElementById("demo");
+
+      var slider14 = document.getElementById("myRange14");
+      var output14 = document.getElementById("demo");
+
+      var slider15 = document.getElementById("myRange15");
+      var output15 = document.getElementById("demo");
+
+      var slider16 = document.getElementById("myRange16");
+      var output16 = document.getElementById("demo");
+
+      var slider17 = document.getElementById("myRange17");
+      var output17 = document.getElementById("demo");
+
+      var slider18 = document.getElementById("myRange18");
+      var output18 = document.getElementById("demo");
+
+      var slider19 = document.getElementById("myRange19");
+      var output19 = document.getElementById("demo");
+
+      var slider20 = document.getElementById("myRange20");
+      var output20 = document.getElementById("demo");
+
+
+      // write the slider values to the database
+      name = "Slider 1";
+      set(ref(db, 'Column Names/ColA1'), {
+            value : name
+      });
+      name = "Slider 2";
+      set(ref(db, 'Column Names/ColB2'), {
+            value : name
+      });
+      name = "Slider 3";
+      set(ref(db, 'Column Names/ColC3'), {
+            value : name
+      });
+      name = "Slider 4";
+      set(ref(db, 'Column Names/ColD4'), {
+            value : name
+      });
+      name = "Slider 5";
+      set(ref(db, 'Column Names/ColE5'), {
+            value : name
+      });
+      name = "Slider 6";
+      set(ref(db, 'Column Names/ColF6'), {
+            value : name
+      });
+      name = "Slider 7";
+      set(ref(db, 'Column Names/ColG7'), {
+            value : name
+      });
+      name = "Slider 8";
+      set(ref(db, 'Column Names/ColH8'), {
+            value : name
+      });
+      name = "Slider 9";
+      set(ref(db, 'Column Names/ColI9'), {
+            value : name
+      });
+      name = "Slider 10";
+      set(ref(db, 'Column Names/ColJ10'), {
+            value : name
+      });
+      name = "Slider 11";
+      set(ref(db, 'Column Names/ColK11'), {
+            value : name
+      });
+      name = "Slider 12";
+      set(ref(db, 'Column Names/ColL12'), {
+            value : name
+      });
+      name = "Slider 13";
+      set(ref(db, 'Column Names/ColM13'), {
+            value : name
+      });
+      name = "Slider 14";
+      set(ref(db, 'Column Names/ColN14'), {
+            value : name
+      });
+      name = "Slider 15";
+      set(ref(db, 'Column Names/ColO15'), {
+            value : name
+      });
+      name = "Slider 16";
+      set(ref(db, 'Column Names/ColP16'), {
+            value : name
+      });
+      name = "Slider 17";
+      set(ref(db, 'Column Names/ColQ17'), {
+            value : name
+      });
+      name = "Slider 18";
+      set(ref(db, 'Column Names/ColR18'), {
+            value : name
+      });
+      name = "Slider 19";
+      set(ref(db, 'Column Names/ColS19'), {
+            value : name
+      });
+      name = "Slider 20";
+      set(ref(db, 'Column Names/ColT20'), {
+            value : name
+      });
+
+
+
+      // set the name var to the sliders value
+      name = slider.value
+      // set the slider value to the db path
+      set(ref(db,'Sliders/Slider_1'),{
+        value : name
+      });
+      name = slider2.value;
+      set(ref(db, 'Sliders/Slider_2'), {
+        value : name
+      });
+       name = slider3.value
+      set(ref(db,'Sliders/Slider_3'),{
+        value : name
+      });
+      name = slider4.value;
+      set(ref(db, 'Sliders/Slider_4'), {
+        value : name
+      });
+       name = slider5.value
+      set(ref(db,'Sliders/Slider_5'),{
+        value : name
+      });
+      name = slider6.value;
+      set(ref(db, 'Sliders/Slider_6'), {
+        value : name
+      });
+      name = slider7.value
+      set(ref(db,'Sliders/Slider_7'),{
+        value : name
+      });
+      name = slider8.value;
+      set(ref(db, 'Sliders/Slider_8'), {
+        value : name
+      });
+      name = slider9.value
+      set(ref(db,'Sliders/Slider_9'),{
+        value : name
+      });
+      name = slider10.value;
+      set(ref(db, 'Sliders/Slider_10'), {
+        value : name
+      });
+      name = slider11.value
+      set(ref(db,'Sliders/Slider_11'),{
+        value : name
+      });
+      name = slider12.value;
+      set(ref(db, 'Sliders/Slider_12'), {
+        value : name
+      });
+      name = slider13.value
+      set(ref(db,'Sliders/Slider_13'),{
+        value : name
+      });
+      name = slider14.value;
+      set(ref(db, 'Sliders/Slider_14'), {
+        value : name
+      });
+      name = slider15.value
+      set(ref(db,'Sliders/Slider_15'),{
+        value : name
+      });
+      name = slider16.value;
+      set(ref(db, 'Sliders/Slider_16'), {
+        value : name
+      });
+      name = slider17.value
+      set(ref(db,'Sliders/Slider_17'),{
+        value : name
+      });
+      name = slider18.value;
+      set(ref(db, 'Sliders/Slider_18'), {
+        value : name
+      });
+      name = slider19.value
+      set(ref(db,'Sliders/Slider_19'),{
+        value : name
+      });
+      name = slider20.value;
+      set(ref(db, 'Sliders/Slider_20'), {
+        value : name
+      });
+
+
+      // create an oninput event listener function 
+      slider.oninput = function() {
+        // set the name var as the slider value
+        name = slider.value;
+        // set the name value to the refrenced db path
+        set(ref(db, 'Sliders/Slider_1'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider2.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider2.value);
+        name = slider2.value;
+        set(ref(db, 'Sliders/Slider_2'), {
+          value : name
+        });
+      }
+
+      slider3.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider3.value);
+        name = slider3.value;
+        set(ref(db, 'Sliders/Slider_3'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider4.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider4.value);
+        name = slider4.value;
+        set(ref(db, 'Sliders/Slider_4'), {
+          value : name
+        });
+      }
+
+      slider5.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider5.value);
+        name = slider5.value;
+        set(ref(db, 'Sliders/Slider_5'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider6.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider6.value);
+        name = slider6.value;
+        set(ref(db, 'Sliders/Slider_6'), {
+          value : name
+        });
+      }
+
+      slider7.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider7.value);
+        name = slider7.value;
+        set(ref(db, 'Sliders/Slider_7'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider8.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider8.value);
+        name = slider8.value;
+        set(ref(db, 'Sliders/Slider_8'), {
+          value : name
+        });
+      }
+
+      slider9.oninput = function() {
+        //output.innerHTML = this.value;
+        //console.log(slider9.value);
+        name = slider9.value;
+        set(ref(db, 'Sliders/Slider_9'), {
+          value : name
+        });
+      }
+
+      slider10.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider10.value);
+        name = slider10.value;
+        set(ref(db, 'Sliders/Slider_10'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider11.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider11.value);
+        name = slider11.value;
+        set(ref(db, 'Sliders/Slider_11'), {
+          value : name
+        });
+      }
+
+      slider12.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider12.value);
+        name = slider12.value;
+        set(ref(db, 'Sliders/Slider_12'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider13.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider13.value);
+        name = slider13.value;
+        set(ref(db, 'Sliders/Slider_13'), {
+          value : name
+        });
+      }
+
+      slider14.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider14.value);
+        name = slider14.value;
+        set(ref(db, 'Sliders/Slider_14'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider15.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider15.value);
+        name = slider15.value;
+        set(ref(db, 'Sliders/Slider_15'), {
+          value : name
+        });
+      }
+
+      slider16.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider16.value);
+        name = slider16.value;
+        set(ref(db, 'Sliders/Slider_16'), {
+          value : name
+        });
+      }
+
+      
+      // Update the current slider value (each time you drag the slider handle)
+      slider17.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider17.value);
+        name = slider17.value;
+        set(ref(db, 'Sliders/Slider_17'), {
+          value : name
+        });
+      }
+
+      slider18.oninput = function() {
+        //output.innerHTML = this.value;
+        //console.log(slider9.value);
+        name = slider18.value;
+        set(ref(db, 'Sliders/Slider_18'), {
+          value : name
+        });
+      }
+
+      // Update the current slider value (each time you drag the slider handle)
+      slider19.oninput = function() {
+        //output.innerHTML = this.value;
+        console.log(slider19.value);
+        name = slider19.value;
+        set(ref(db, 'Sliders/Slider_19'), {
+          value : name
+        });
+      }
+
+      slider20.oninput = function() {
+        //output.innerHTML = this.value;
+        //console.log(slider9.value);
+        name = slider20.value;
+        set(ref(db, 'Sliders/Slider_20'), {
+          value : name
+        });
+      }
+
+
+      
+
+      // Get ML output
+      const ml0Ref = ref(db, 'Algorithim Output/Class_0 Probability');
+      onValue(ml0Ref, (snapshot) => {
+        var ml0_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("ml0_op").innerHTML = ml0_data;
+
+      });
+
+      // Get ML output
+      const ml1Ref = ref(db, 'Algorithim Output/Class_1 Probability');
+      onValue(ml1Ref, (snapshot) => {
+        var ml1_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("ml1_op").innerHTML = ml1_data;
+
+      });
+
+
+      // Get training score
+      const trainScoreRef = ref(db, 'Model Scoring/Training Score');
+      onValue(trainScoreRef, (snapshot) => {
+        var trainScore_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("trainScore_op").innerHTML = trainScore_data;
+
+      });
+
+      // Get test score 
+      const testScoreRef = ref(db, 'Model Scoring/Test Score');
+      onValue(testScoreRef, (snapshot) => {
+        var testScore_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("testScore_op").innerHTML = testScore_data;
+
+      });
+
+      // Get precisiion
+      const precisionRef = ref(db, 'Model Scoring/Precision');
+      onValue(precisionRef, (snapshot) => {
+        var precision_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("precision_op").innerHTML = precision_data;
+
+      });
+
+      // Get recall
+      const recallRef = ref(db, 'Model Scoring/Recall');
+      onValue(recallRef, (snapshot) => {
+        var recall_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("recall_op").innerHTML = recall_data;
+
+      });
+
+      // Get f1 - score
+      const f1Ref = ref(db, 'Model Scoring/f1-score');
+      onValue(f1Ref, (snapshot) => {
+        var f1_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("f1_op").innerHTML = f1_data;
+
+      });
+
+      // Get support
+      const supRef = ref(db, 'Model Scoring/Support');
+      onValue(supRef, (snapshot) => {
+        var sup_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("sup_op").innerHTML = sup_data;
+
+      });
+
+      // Get class 0 %
+      const cl0Ref = ref(db, 'Binary_Classes/Class_0/value');
+      onValue(cl0Ref, (snapshot) => {
+        var cl0_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("cl0_op").innerHTML = cl0_data;
+        document.getElementById("class_0").innerHTML = cl0_data;
+      });
+
+      // Get class 1 %
+      const cl1Ref = ref(db, 'Binary_Classes/Class_1/value');
+      onValue(cl1Ref, (snapshot) => {
+        var cl1_data = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("cl1_op").innerHTML = cl1_data;
+        document.getElementById("class_1").innerHTML = cl1_data;
+      });
+
+      // get time stamp from backend
+      const timedbRef = ref(db, 'Timestamp/value');
+      onValue(timedbRef, (snapshot) => {
+        var timedbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("time_op").innerHTML = timedbdata;
+
+      });
+      
+    fname.oninput = function(){
+      console.log(fname.value);
+      name = fname.value;
+        set(ref(db, 'Key'), {
+          value : name
+        });
+    }
+
+    // set an on input event listener for the column amount
+    // input field
+    colAmount.oninput = function(){
+      // set the name to the colAmount value entered
+      name = colAmount.value;
+      // ensures only 2 digits can be passed 
+      name = name.substring(0,2);
+      // if entered value exceeds 20, warning msg is alerted to user
+      if (name > 20){
+        msg2();
+        name = 0;
+      }
+      // if 0, then we hide all input fields
+      if(name == 0){
+        document.getElementById("col1").style.display = "none";
+        document.getElementById("col2").style.display = "none";
+        document.getElementById("col3").style.display = "none";
+        document.getElementById("col4").style.display = "none";
+        document.getElementById("col5").style.display = "none";
+        document.getElementById("col6").style.display = "none";
+        document.getElementById("col7").style.display = "none";
+        document.getElementById("col8").style.display = "none";
+        document.getElementById("col9").style.display = "none";
+        document.getElementById("col10").style.display = "none";
+        document.getElementById("col11").style.display = "none";
+        document.getElementById("col12").style.display = "none";
+        document.getElementById("col13").style.display = "none";
+        document.getElementById("col14").style.display = "none";
+        document.getElementById("col15").style.display = "none";
+        document.getElementById("col16").style.display = "none";
+        document.getElementById("col17").style.display = "none";
+        document.getElementById("col18").style.display = "none";
+        document.getElementById("col19").style.display = "none";
+        document.getElementById("col20").style.display = "none";
+
+        document.getElementById("myRange").style.display = "none";
+        document.getElementById("myRange2").style.display = "none";
+        document.getElementById("myRange3").style.display = "none";
+        document.getElementById("myRange4").style.display = "none";
+        document.getElementById("myRange5").style.display = "none";
+        document.getElementById("myRange6").style.display = "none";
+        document.getElementById("myRange7").style.display = "none";
+        document.getElementById("myRange8").style.display = "none";
+        document.getElementById("myRange9").style.display = "none";
+        document.getElementById("myRange10").style.display = "none";
+        document.getElementById("myRange11").style.display = "none";
+        document.getElementById("myRange12").style.display = "none";
+        document.getElementById("myRange13").style.display = "none";
+        document.getElementById("myRange14").style.display = "none";
+        document.getElementById("myRange15").style.display = "none";
+        document.getElementById("myRange16").style.display = "none";
+        document.getElementById("myRange17").style.display = "none";
+        document.getElementById("myRange18").style.display = "none";
+        document.getElementById("myRange19").style.display = "none";
+        document.getElementById("myRange20").style.display = "none";
+
+        document.getElementById("col1db_").style.display = "none";
+        document.getElementById("col2db_").style.display = "none";
+        document.getElementById("col3db_").style.display = "none";
+        document.getElementById("col4db_").style.display = "none";
+        document.getElementById("col5db_").style.display = "none";
+        document.getElementById("col6db_").style.display = "none";
+        document.getElementById("col7db_").style.display = "none";
+        document.getElementById("col8db_").style.display = "none";
+        document.getElementById("col9db_").style.display = "none";
+        document.getElementById("col10db_").style.display = "none";
+        document.getElementById("col11db_").style.display = "none";
+        document.getElementById("col12db_").style.display = "none";
+        document.getElementById("col13db_").style.display = "none";
+        document.getElementById("col14db_").style.display = "none";
+        document.getElementById("col15db_").style.display = "none";
+        document.getElementById("col16db_").style.display = "none";
+        document.getElementById("col17db_").style.display = "none";
+        document.getElementById("col18db_").style.display = "none";
+        document.getElementById("col19db_").style.display = "none";
+        document.getElementById("col20db_").style.display = "none";
+      }
+      // if 1, show only the first input field
+      else if(name == 1){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("col1db_").style.display = "block";
+      }
+      // if 2, show only the first 2 input fields 
+      else if(name == 2){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+      }
+      else if(name == 3){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+      }
+      else if(name == 4){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+      }
+      else if(name == 5){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block"; 
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+      }
+      else if(name == 6){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+      }
+      else if(name == 7){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+      }
+      else if(name == 8){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+      }
+      else if(name == 9){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+      }
+      else if(name == 10){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+      }
+      else if(name == 11){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+      }
+      else if(name == 12){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+      }
+      else if(name == 13){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+      }
+      else if(name == 14){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+      }
+      else if(name == 15){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+      }
+      else if(name == 16){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+        document.getElementById("col16").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+        document.getElementById("myRange16").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+        document.getElementById("col16db_").style.display = "block";
+      }
+      else if(name == 17){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+        document.getElementById("col16").style.display = "block";
+        document.getElementById("col17").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+        document.getElementById("myRange16").style.display = "block";
+        document.getElementById("myRange17").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+        document.getElementById("col16db_").style.display = "block";
+        document.getElementById("col17db_").style.display = "block";
+      }
+      else if(name == 18){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+        document.getElementById("col16").style.display = "block";
+        document.getElementById("col17").style.display = "block";
+        document.getElementById("col18").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+        document.getElementById("myRange16").style.display = "block";
+        document.getElementById("myRange17").style.display = "block";
+        document.getElementById("myRange18").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+        document.getElementById("col16db_").style.display = "block";
+        document.getElementById("col17db_").style.display = "block";
+        document.getElementById("col18db_").style.display = "block";
+      }
+      else if(name == 19){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+        document.getElementById("col16").style.display = "block";
+        document.getElementById("col17").style.display = "block";
+        document.getElementById("col18").style.display = "block";
+        document.getElementById("col19").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+        document.getElementById("myRange16").style.display = "block";
+        document.getElementById("myRange17").style.display = "block";
+        document.getElementById("myRange18").style.display = "block";
+        document.getElementById("myRange19").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+        document.getElementById("col16db_").style.display = "block";
+        document.getElementById("col17db_").style.display = "block";
+        document.getElementById("col18db_").style.display = "block";
+        document.getElementById("col19db_").style.display = "block";
+      }
+      else if(name == 20){
+        document.getElementById("col1").style.display = "block";
+        document.getElementById("col2").style.display = "block";
+        document.getElementById("col3").style.display = "block";
+        document.getElementById("col4").style.display = "block";
+        document.getElementById("col5").style.display = "block";
+        document.getElementById("col6").style.display = "block";
+        document.getElementById("col7").style.display = "block";
+        document.getElementById("col8").style.display = "block";
+        document.getElementById("col9").style.display = "block";
+        document.getElementById("col10").style.display = "block";
+        document.getElementById("col11").style.display = "block";
+        document.getElementById("col12").style.display = "block";
+        document.getElementById("col13").style.display = "block";
+        document.getElementById("col14").style.display = "block";
+        document.getElementById("col15").style.display = "block";
+        document.getElementById("col16").style.display = "block";
+        document.getElementById("col17").style.display = "block";
+        document.getElementById("col18").style.display = "block";
+        document.getElementById("col19").style.display = "block";
+        document.getElementById("col20").style.display = "block";
+
+        document.getElementById("myRange").style.display = "block";
+        document.getElementById("myRange2").style.display = "block";
+        document.getElementById("myRange3").style.display = "block";
+        document.getElementById("myRange4").style.display = "block";
+        document.getElementById("myRange5").style.display = "block";
+        document.getElementById("myRange6").style.display = "block";
+        document.getElementById("myRange7").style.display = "block";
+        document.getElementById("myRange8").style.display = "block";
+        document.getElementById("myRange9").style.display = "block";
+        document.getElementById("myRange10").style.display = "block";
+        document.getElementById("myRange11").style.display = "block";
+        document.getElementById("myRange12").style.display = "block";
+        document.getElementById("myRange13").style.display = "block";
+        document.getElementById("myRange14").style.display = "block";
+        document.getElementById("myRange15").style.display = "block";
+        document.getElementById("myRange16").style.display = "block";
+        document.getElementById("myRange17").style.display = "block";
+        document.getElementById("myRange18").style.display = "block";
+        document.getElementById("myRange19").style.display = "block";
+        document.getElementById("myRange20").style.display = "block";
+
+        document.getElementById("col1db_").style.display = "block";
+        document.getElementById("col2db_").style.display = "block";
+        document.getElementById("col3db_").style.display = "block";
+        document.getElementById("col4db_").style.display = "block";
+        document.getElementById("col5db_").style.display = "block";
+        document.getElementById("col6db_").style.display = "block";
+        document.getElementById("col7db_").style.display = "block";
+        document.getElementById("col8db_").style.display = "block";
+        document.getElementById("col9db_").style.display = "block";
+        document.getElementById("col10db_").style.display = "block";
+        document.getElementById("col11db_").style.display = "block";
+        document.getElementById("col12db_").style.display = "block";
+        document.getElementById("col13db_").style.display = "block";
+        document.getElementById("col14db_").style.display = "block";
+        document.getElementById("col15db_").style.display = "block";
+        document.getElementById("col16db_").style.display = "block";
+        document.getElementById("col17db_").style.display = "block";
+        document.getElementById("col18db_").style.display = "block";
+        document.getElementById("col19db_").style.display = "block";
+        document.getElementById("col20db_").style.display = "block";
+      }
+
+
+      // set colAmount to the refrence database
+      set(ref(db, 'NumberCols'), {
+          value : name
+      });
+
+
+
+      // send the inputted column name to the refrenced db
+      // create a oninput event listener function
+      col1.oninput = function(){
+        //set the name var to the input value
+        name = col1.value;
+        // set the name value to the database path
+          set(ref(db, 'Column Names/ColA1'), {
+            value : name
+          });
+      }
+
+      col2.oninput = function(){
+        name = col2.value;
+          set(ref(db, 'Column Names/ColB2'), {
+            value : name
+          });
+      }
+      col3.oninput = function(){
+        name = col3.value;
+          set(ref(db, 'Column Names/ColC3'), {
+            value : name
+          });
+      }
+      col4.oninput = function(){
+        name = col4.value;
+          set(ref(db, 'Column Names/ColD4'), {
+            value : name
+          });
+      }
+      col5.oninput = function(){
+        name = col5.value;
+          set(ref(db, 'Column Names/ColE5'), {
+            value : name
+          });
+      }
+      col6.oninput = function(){
+        name = col6.value;
+          set(ref(db, 'Column Names/ColF6'), {
+            value : name
+          });
+      }
+
+
+      col7.oninput = function(){
+        name = col7.value;
+          set(ref(db, 'Column Names/ColG7'), {
+            value : name
+          });
+      }
+      col8.oninput = function(){
+        name = col8.value;
+          set(ref(db, 'Column Names/ColH8'), {
+            value : name
+          });
+      }
+      col9.oninput = function(){
+        name = col9.value;
+          set(ref(db, 'Column Names/ColI9'), {
+            value : name
+          });
+      }
+      col10.oninput = function(){
+        name = col10.value;
+          set(ref(db, 'Column Names/ColJ10'), {
+            value : name
+          });
+      }
+      col11.oninput = function(){
+        name = col11.value;
+          set(ref(db, 'Column Names/ColK11'), {
+            value : name
+          });
+      }
+      col12.oninput = function(){
+        name = col12.value;
+          set(ref(db, 'Column Names/ColL12'), {
+            value : name
+          });
+      }
+      col13.oninput = function(){
+        name = col13.value;
+          set(ref(db, 'Column Names/ColM13'), {
+            value : name
+          });
+      }
+      col14.oninput = function(){
+        name = col14.value;
+          set(ref(db, 'Column Names/ColN14'), {
+            value : name
+          });
+      }
+      col15.oninput = function(){
+        name = col15.value;
+          set(ref(db, 'Column Names/ColO15'), {
+            value : name
+          });
+      }
+      col16.oninput = function(){
+        name = col16.value;
+          set(ref(db, 'Column Names/ColP16'), {
+            value : name
+          });
+      }
+      col17.oninput = function(){
+        name = col17.value;
+          set(ref(db, 'Column Names/ColQ17'), {
+            value : name
+          });
+      }
+      col18.oninput = function(){
+        name = col18.value;
+          set(ref(db, 'Column Names/ColR18'), {
+            value : name
+          });
+      }
+      col19.oninput = function(){
+        name = col19.value;
+          set(ref(db, 'Column Names/ColS19'), {
+            value : name
+          });
+      }
+      col20.oninput = function(){
+        name = col20.value;
+          set(ref(db, 'Column Names/ColT20'), {
+            value : name
+          });
+      }
+
+
+
+
+
+
+
+      class_0.oninput = function(){
+        name = class_0.value;
+          set(ref(db, 'Binary_Classes/Class_0'), {
+            value : name
+          });
+      }
+
+
+      class_1.oninput = function(){
+        name = class_1.value;
+          set(ref(db, 'Binary_Classes/Class_1'), {
+            value : name
+          });
+      }
+
+
+
+
+      target.oninput = function(){
+        name = target.value;
+          set(ref(db, 'Target/Variable'), {
+            value : name
+          });
+      }
+
+
+
+
+      // 
+      
+      
+      const col1dbRef = ref(db, 'Column Names/ColA1/value');
+      onValue(col1dbRef, (snapshot) => {
+        var col1dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col1db_").innerHTML = col1dbdata;
+
+      });
+      const col2dbRef = ref(db, 'Column Names/ColB2/value');
+      onValue(col2dbRef, (snapshot) => {
+        var col2dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col2db_").innerHTML = col2dbdata;
+
+      });
+      const col3dbRef = ref(db, 'Column Names/ColC3/value');
+      onValue(col3dbRef, (snapshot) => {
+        var col3dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col3db_").innerHTML = col3dbdata;
+
+      });
+      const col4dbRef = ref(db, 'Column Names/ColD4/value');
+      onValue(col4dbRef, (snapshot) => {
+        var col4dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col4db_").innerHTML = col4dbdata;
+
+      });
+      const col5dbRef = ref(db, 'Column Names/ColE5/value');
+      onValue(col5dbRef, (snapshot) => {
+        var col5dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col5db_").innerHTML = col5dbdata;
+
+      });
+
+
+
+      // 
+      const col6dbRef = ref(db, 'Column Names/ColF6/value');
+      onValue(col6dbRef, (snapshot) => {
+        var col6dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col6db_").innerHTML = col6dbdata;
+
+      });
+      const col7dbRef = ref(db, 'Column Names/ColG7/value');
+      onValue(col7dbRef, (snapshot) => {
+        var col7dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col7db_").innerHTML = col7dbdata;
+
+      });
+      const col8dbRef = ref(db, 'Column Names/ColH8/value');
+      onValue(col8dbRef, (snapshot) => {
+        var col8dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col8db_").innerHTML = col8dbdata;
+
+      });
+      const col9dbRef = ref(db, 'Column Names/ColI9/value');
+      onValue(col9dbRef, (snapshot) => {
+        var col9dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col9db_").innerHTML = col9dbdata;
+
+      });
+      const col10dbRef = ref(db, 'Column Names/ColJ10/value');
+      onValue(col10dbRef, (snapshot) => {
+        var col10dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col10db_").innerHTML = col10dbdata;
+
+      });
+
+
+      // 
+      const col11dbRef = ref(db, 'Column Names/ColK11/value');
+      onValue(col11dbRef, (snapshot) => {
+        var col11dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col11db_").innerHTML = col11dbdata;
+
+      });
+      const col12dbRef = ref(db, 'Column Names/ColL12/value');
+      onValue(col12dbRef, (snapshot) => {
+        var col12dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col12db_").innerHTML = col12dbdata;
+
+      });
+      const col13dbRef = ref(db, 'Column Names/ColM13/value');
+      onValue(col13dbRef, (snapshot) => {
+        var col13dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col13db_").innerHTML = col13dbdata;
+
+      });
+      const col14dbRef = ref(db, 'Column Names/ColN14/value');
+      onValue(col14dbRef, (snapshot) => {
+        var col14dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col14db_").innerHTML = col14dbdata;
+
+      });
+      const col15dbRef = ref(db, 'Column Names/ColO15/value');
+      onValue(col15dbRef, (snapshot) => {
+        var col15dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col15db_").innerHTML = col15dbdata;
+
+      });
+
+
+
+      // 
+      const col16dbRef = ref(db, 'Column Names/ColP16/value');
+      onValue(col16dbRef, (snapshot) => {
+        var col16dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col16db_").innerHTML = col16dbdata;
+
+      });
+      const col17dbRef = ref(db, 'Column Names/ColQ17/value');
+      onValue(col17dbRef, (snapshot) => {
+        var col17dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col17db_").innerHTML = col17dbdata;
+
+      });
+      const col18dbRef = ref(db, 'Column Names/ColR18/value');
+      onValue(col18dbRef, (snapshot) => {
+        var col18dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col18db_").innerHTML = col18dbdata;
+      });
+      const col19dbRef = ref(db, 'Column Names/ColS19/value');
+      onValue(col19dbRef, (snapshot) => {
+        var col19dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col19db_").innerHTML = col19dbdata;
+      });
+      const col20dbRef = ref(db, 'Column Names/ColT20/value');
+      onValue(col20dbRef, (snapshot) => {
+        var col20dbdata = snapshot.val();
+        //console.log(data);
+        console.log(snapshot.val()); 
+        //alert("Here is your value: " + data); 
+        document.getElementById("col20db_").innerHTML = col20dbdata;
+
+      });
+      
+    }
+
+
+    </script>
+
+  </head>
+  <body class="light" id="top">
+
+    <header class="header center">
+      <h3>
+        <a href="https://www.linkedin.com/in/jonny-logue-3b3955158" class="link"
+          >S00184337 - Jonathan Logue</a
+        >
+      </h3>
+
+      <nav class="nav center">
+        <ul class="nav__list center">
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#projects">data</a>
+          </li>
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#skills">model</a>
+          </li>
+          <li class="nav__list-item">
+            <a class="link link--nav" href="#contact">links</a>
+          </li>
+        </ul>
+
+        <button type="button" aria-label="toggle theme" class="btn btn--icon">
+          <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+        </button>
+
+        <button
+          type="button"
+          aria-label="toggle navigation"
+          class="btn btn--icon nav__hamburger"
+        >
+          <i aria-hidden="true" class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- About -->
+      <div class="about center">
+
+        <h1><span class="about__name">Machine Learning</span></h1>
+        <h2 class="about__role">Binary Classification Tool</h2>
+        <p class="about__desc">
+          Welcome to my final year project for the BSc (Hons) in software development
+          course in Atlantic Technological University (ATU) Sligo. The aim of this project was to create a general purpose machine learning 
+          binary classification tool that could be used on a wide range of applications as well as providing 
+          interactivity with the model.
+        </p>
+
+        <p class="about__desc">
+          Unsure on Binary Classification or Machine Learning?
+          Hit the links below, sit back and enjoy the quick refresher videos.
+        </p>
+
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        <a href="https://www.youtube.com/watch?v=gDEbvG7EZOM">
+            <span class="btn btn--outline">Binary Classification?</span>
+        </a>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        <a href="https://www.youtube.com/watch?v=8TuRJg76sW8">
+            <span class="btn btn--outline">Machine Learning Classification models?</span>
+        </a>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        
+        <h2 class="about__role">Data Upload</h2>
+        <h2 class="about__role">Section Walk Through</h2>
+        <p class="about__desc">
+          Here you, the user. Will upload the dataset that you would like use to create a binary classification model.
+          Your dataset will be stored in a database that you can call on individually later, so don't be shy in uploading several
+          datasets.
+        </p>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p class="about__desc">
+          One codition, your data must be in CSV fomrat.
+        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        <input type="file" id="file-chooser" accept=".csv" />
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+
+        <button class="btn btn--outline" id="upload-button">Upload Your Data</button>
+        <div id="results"></div>
+
+        
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>  
+
+
+
+
+
+        
+
+
+        
+
+        <h2 class="about__role">Key Labelling</h2>
+        <h2 class="about__role">Section Walk Through</h2>
+        <p class="about__desc">
+          The next step is to define the important bits of your data. Namely, the file name, the target, the amount of columns to be considered and their names. I'll explain a little more.
+        </p>    
+        <p class="about__desc">
+          File Name - Since you can upload multiple files to our database, we need to confirm which file you would like to proceed with.
+        </p> 
+        <p class="about__desc">
+          Target - Also known as the predictor. This is the item you want to predict, find out, analyse! The reason you are here!
+        </p>
+        <p class="about__desc">
+          Amount of Columns - We need to know how many columns or input variables you would like to work with. It helps us keep everything clean, tells us how many interactive sliders you need later and sets up our filters to help keep your dataset in shape as it moves through the modelling process.
+        </p>
+        <p class="about__desc">
+          Column Names - This is an important step as it confirms to us, the columns or variables you would like to use. Note - Any varibales within your dataset that are not explicitly named, will be dropped and not processed into the model.
+        </p>
+        
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>   
+
+        <label for="fname">Enter File Name:</label>
+        <input type="text" id="fname" name="fname" maxlength = "25" placeholder="Type Here">
+
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>   
+
+        
+        
+        
+        <input type="text" placeholder="Name Target Column" id="target" name="target" maxlength="25"><br><br>   
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        <label for="colAmount">Enter How Many Columns your Data Contains:</label>
+        <input type="text" id="colAmount" name="colAmount" maxlength="2" placeholder="Type Here"><br><br>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+        
+        <input type="text" placeholder="Name Column No.1" id="col1" name="col1" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.2" id="col2" name="col2" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.3" id="col3" name="col3" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.4" id="col4" name="col4" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.5" id="col5" name="col5" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.6" id="col6" name="col6" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.7" id="col7" name="col7" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.8" id="col8" name="col8" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.9" id="col9" name="col9" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.10" id="col10" name="col10" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.11" id="col11" name="col11" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.12" id="col12" name="col12" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.13" id="col13" name="col13" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.14" id="col14" name="col14" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.15" id="col15" name="col15" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.16" id="col16" name="col16" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.17" id="col17" name="col17" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.18" id="col18" name="col18" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.19" id="col19" name="col19" maxlength="25"><br><br>
+        <input type="text" placeholder="Name Column No.20" id="col20" name="col20" maxlength="25"><br><br>
+
+        
+
+
+        <!-- Sliders-->
+      <section class="section skills" id="skills">
+        <h2 class="section__title">Classification Designation</h2>
+
+        <p class="about__desc">
+          The next step is to define what exactly it is you are trying to classify. Quick refresher, in Binary Classification we are try to determine whether something is one thing or another i.e a coin is either heads or tails?, an exam is either passed or failed etc. 
+        </p> 
+        <p class="about__desc">
+          The model will however boil these classes down to either a 0 or a 1 (Hence "Binary"), therefore its our job to assign classes to the 0 and the 1 to help us clearly understand the model output. 
+        </p> 
+
+        <div>
+          <label for="class_0">Specify your Binary Classifications:</label>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <input type="text" placeholder="Assign a Class Name to the value 0" id="class_0" name="class_0" maxlength="25"><br><br>
+          <input type="text" placeholder="Assign a Class Name to the value 1" id="class_1" name="class_1" maxlength="25"><br><br>
+         
+        </div>
+
+        
+        
+      </section>
+          
+
+
+      <!-- Sliders-->
+      <section class="section skills" id="skills">
+        <h2 class="section__title">Model Input</h2>
+        <div>
+          <div class="slidecontainer">
+            <label><span id="col1db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col2db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col3db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col4db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange4">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col5db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange5">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col6db_"></span></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange6">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col7db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange7">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col8db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange8">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col9db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange9">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col10db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange10">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col11db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange11">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col12db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange12">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col13db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange13">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col14db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange14">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col15db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange15">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col16db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange16">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col17db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange17">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col18db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange18">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col19db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange19">
+          </div>
+          <div class="slidecontainer">
+            <label><span id="col20db_"></label>
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange20">
+          </div>
+        </div> 
+
+      <section class="section skills" id="skills">
+         <h2 class="section__title">Model Scoring Info</h2>
+
+        <div>
+
+          
+          
+          <button id="score_info" class="btn btn--outline">accuracy</button>
+          <button id="precision_info" class="btn btn--outline">precision</button>
+          <button id="recall_info" class="btn btn--outline">recall</button>
+          <button id="f1_info" class="btn btn--outline">f1</button>
+          <button id="support_info" class="btn btn--outline">support</button>
+        </div>
+        
+      </section>  
+
+        
+        
+      </section>
+
+      <!-- Sliders-->
+      <section class="section skills" id="skills">
+        <h2 class="section__title">Model Output</h2>
+
+        <div>
+          
+         
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+          <p>Model Traing Dataset Accuracy:  <span id="trainScore_op"></span> %
+          </p>
+          <p>Model Test Dataset Accuracy:  <span id="testScore_op"></span> %
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+          <p>Model Precision Score:  <span id="precision_op"></span> %
+          </p>
+          <p>Model Recall Score:  <span id="recall_op"></span> 
+          </p>
+          <p>Model F1 Score:  <span id="f1_op"></span> 
+          </p>
+          <p>Model Support Score:  <span id="sup_op"></span> 
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+          <p>Model Output - <span id="cl0_op"></span>:  <span id="ml0_op"></span> %
+          </p>
+          <p>Model Output - <span id="cl1_op"></span>:  <span id="ml1_op"></span> %
+          </p>
+
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        
+
+          <button id="run" class="btn btn--outline" onclick="msg()">Start / Restart System</button>
+          
+          <button id="clear" class="btn btn--outline" onclick="msg()">Clear training info</button>
+        
+        </div>
+
+        
+        
+      </section>
+
+      
+
+      <!-- Contact -->
+      <section class="section contact center" id="contact">
+        <h2 class="section__title">Links</h2>
+        <a href="mailto:Jonathan.Logue@mail.itsligo.ie">
+          <span class="btn btn--outline">Email</span>
+        </a>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <a href="https://example.com">
+            <span class="btn btn--outline">Resume</span>
+        </a>
+        <div class="about__contact center">
+          
+
+          <a
+            href="https://github.com/Jlo93"
+            aria-label="github"
+            class="link link--icon"
+          >
+            <i aria-hidden="true" class="fab fa-github"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/jonny-logue-3b3955158"
+            aria-label="linkedin"
+            class="link link--icon"
+          >
+            <i aria-hidden="true" class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a
+        href="https://github.com/Jlo93"
+        class="link footer__link"
+      >
+        Created By Jonathan Logue : S00184337
+      </a>
+      <p>Database TimeStamp:  <span id="time_op"></span> 
+      </p>
+    </footer>
+
+    <div class="scroll-container">
+    <div class="scroll-top">
+      <a aria-label="Scroll up" href="#top">
+        <i aria-hidden="true" class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
