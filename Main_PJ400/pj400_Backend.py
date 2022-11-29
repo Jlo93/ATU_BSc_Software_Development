@@ -1,4 +1,4 @@
-# Project 400 - S00184337 - Geneeral Purppose Binary Classifier
+# Project 400 - S00184337 - General Purppose Binary Classifier
 # Code description
 # server side code that handles the file filtration, dataframe formatting, model training, verification and model outputting
 # #
